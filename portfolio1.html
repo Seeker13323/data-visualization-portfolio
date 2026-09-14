@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfolio 1 - Automobile Fuel Economy</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+
+<body>
+
+    <a class="back-link" href="index.html">← Back to Portfolio</a>
+
+    <h1>Portfolio 1: Automobile Fuel Economy</h1>
+
+    <h2>About the Data</h2>
+
+    <p>
+        This project explores fuel economy data for automobiles.
+        The dataset contains both categorical and numerical variables.
+        For these visualizations, I examined the relationship between
+        drive type and average combined miles per gallon (MPG).
+    </p>
+
+    <p>
+        The question explored in all four visualizations is:
+        <strong>How does average combined fuel economy differ by drive type?</strong>
+    </p>
+
+    <h2>Figure 1: Basic Bar Chart</h2>
+
+    <div id="chart1" class="chart"></div>
+
+    <p class="description">
+        This basic bar chart compares average combined fuel economy across
+        four drive types. Drive type is represented on the x-axis and
+        average combined MPG is represented on the y-axis. The height of
+        each bar makes it easy to compare fuel efficiency across the four
+        categories.
+    </p>
+
+    <h2>Figure 2: Sorted Horizontal Bar Chart</h2>
+
+    <div id="chart2" class="chart"></div>
+
+    <p class="description">
+        For the second visualization, I changed the bars from vertical to
+        horizontal and sorted the categories from highest to lowest average
+        MPG. The horizontal layout makes the drive-type labels easier to
+        read, while sorting makes the ranking of the categories immediately
+        visible.
+    </p>
+
+    <h2>Figure 3: Dot Plot</h2>
+
+    <div id="chart3" class="chart"></div>
+
+    <p class="description">
+        The third visualization replaces the bars with points. The position
+        of each point along the x-axis communicates average MPG while using
+        less visual space than the bar charts. This creates a simpler view
+        that emphasizes the relative positions of the four values.
+    </p>
+
+    <h2>Figure 4: Bar Chart with Color Encoding</h2>
+
+    <div id="chart4" class="chart"></div>
+
+    <p class="description">
+        The final visualization uses sorted horizontal bars and adds a
+        sequential color scale. Darker colors represent higher average MPG,
+        providing an additional visual cue for the same numerical variable.
+        Bar length remains the primary way to compare the values, while
+        color reinforces the differences.
+    </p>
+
+    <script>
+        vegaEmbed("#chart1", "charts/chart1.json");
+        vegaEmbed("#chart2", "charts/chart2.json");
+        vegaEmbed("#chart3", "charts/chart3.json");
+        vegaEmbed("#chart4", "charts/chart4.json");
+    </script>
+
+</body>
+
+</html>
