@@ -1,0 +1,132 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 850,
+  "height": 420,
+  "title": {
+    "text": "India: Annual GDP Per Capita Growth",
+    "subtitle": "World Bank data, 1991–2025",
+    "fontSize": 20,
+    "subtitleFontSize": 13,
+    "anchor": "start"
+  },
+  "data": {
+    "url": "india_gdp_growth.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [5, 5],
+        "color": "#888888"
+      },
+      "encoding": {
+        "y": {
+          "datum": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "point": true,
+        "strokeWidth": 2.5,
+        "color": "#2f6fb0"
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "title": "Year",
+          "scale": {
+            "domain": [1991, 2025]
+          },
+          "axis": {
+            "format": "d",
+            "tickCount": 12
+          }
+        },
+        "y": {
+          "field": "GDP_Per_Capita_Growth",
+          "type": "quantitative",
+          "title": "GDP per capita growth (%)"
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "type": "quantitative",
+            "format": "d",
+            "title": "Year"
+          },
+          {
+            "field": "GDP_Per_Capita_Growth",
+            "type": "quantitative",
+            "format": ".2f",
+            "title": "Growth (%)"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Year == 2020"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 120,
+        "color": "#c0392b"
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "GDP_Per_Capita_Growth",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Year == 2020"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dx": 10,
+        "dy": -10,
+        "align": "left",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#c0392b"
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "GDP_Per_Capita_Growth",
+          "type": "quantitative"
+        },
+        "text": {
+          "value": "2020"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "gridColor": "#dddddd",
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    }
+  }
+}

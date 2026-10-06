@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improving an India GDP Growth Visualization</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.6;
+            color: #222;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 40px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 35px;
+        }
+
+        .description {
+            max-width: 850px;
+            margin-bottom: 25px;
+        }
+
+        .original-chart {
+            width: 100%;
+            max-width: 950px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+
+        #chart {
+            margin-top: 20px;
+        }
+
+        .source {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Improving an India GDP Growth Visualization</h1>
+
+    <p class="subtitle">
+        Redesigning a visualization of India's real GDP per capita growth.
+    </p>
+
+    <h2>Original Visualization</h2>
+
+    <img
+        src="Original GDP Chart.png"
+        alt="Original visualization of India's real GDP per capita growth under each prime minister"
+        class="original-chart"
+    >
+    
+<p class="source">
+    The original chart resets each prime minister's term to an index of 100,
+    which makes periods of different lengths appear directly comparable.
+</p>
+
+    <h2>Why I Chose This Visualization</h2>
+
+    <p class="description">
+    I chose this visualization because I liked the idea of comparing India's
+    economic growth over time, but the original chart made the comparison more
+    confusing than it needed to be. Each prime minister's period starts again
+    at an index value of 100, even though the periods are different lengths.
+    This makes the lines look easy to compare at first, but they do not actually
+    show how fast GDP per capita was growing each year.
+    </p>
+
+    <h2>Improved Visualization</h2>
+
+    <div id="chart"></div>
+
+    <h2>What I Changed</h2>
+
+    <p class="description">
+    I redesigned the visualization using annual GDP per capita growth from the
+    World Bank. Instead of restarting the data at 100 for each period, every
+    year now uses the same measurement and the same time scale. I also added a
+    zero-growth reference line and highlighted 2020, which stands out as the
+    largest decline in the chart. I considered keeping the indexed format from
+    the original, but annual percentage growth makes changes from year to year
+    much easier to compare.
+</p>
+<p class="description">
+    The improved chart makes it easier to see periods of strong growth,
+    slowdowns, and economic decline without having to compare separate indexed
+    lines.
+</p>
+    <p class="source">
+    Original visualization:
+    <a href="https://www.reddit.com/r/dataisbeautiful/comments/1v4953a/oc_indias_real_gdp_per_capita_growth_under/"
+       target="_blank">
+        Reddit - India's Real GDP Per Capita Growth Under Each Prime Minister
+    </a>
+    <br>
+
+    Data source:
+    <a href="https://api.worldbank.org/v2/country/IND/indicator/NY.GDP.PCAP.KD.ZG?format=json&per_page=100"
+       target="_blank">
+        World Bank - GDP per capita growth (annual %), India
+    </a>
+</p>
+
+<script>
+    vegaEmbed("#chart", "chart.json");
+
+</script>
+</body>
+
+</html>
