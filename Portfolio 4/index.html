@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio 4 - Gephi Tutorial</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Portfolio 4: Visualizing Marvel Character Networks with Gephi</h1>
+    <p>A step-by-step beginner's tutorial using Gephi 0.11.4</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Introduction</h2>
+      <p>
+        In this tutorial, I explain how to use Gephi to create a
+        network visualization showing relationships between Marvel
+        comic book characters.
+      </p>
+
+      <p>
+        The dataset contains 327 characters and 9,891 connections.
+        I used Gephi to identify highly connected characters,
+        detect communities, and create a color-coded network.
+      </p>
+    </section>
+
+    <section>
+      <h2>Final Visualization</h2>
+
+      <img
+        src="images/marvel-network.svg"
+        alt="Marvel character network visualized in Gephi"
+        style="width:100%; background:white; padding:15px; border-radius:10px;"
+      >
+
+      <p>
+        Node size represents degree centrality, while node color
+        represents one of seven detected communities.
+        Connections indicate character co-appearances in Marvel comics.
+      </p>
+    </section>
+
+<section>
+  <h2>Step-by-Step Gephi Tutorial</h2>
+
+  <p>
+    This tutorial explains how to create a network visualization
+    using Gephi 0.11.4. Although I use Marvel comic characters,
+    the same process can be used with other datasets containing
+    nodes and relationships.
+  </p>
+
+  <h3>Step 1: Install and Open Gephi</h3>
+  <p>
+    Download Gephi from the official website at
+    <a href="https://gephi.org/" target="_blank">gephi.org</a>.
+    Install the software and open the Overview workspace.
+  </p>
+  <img src="screenshots/01-gephi-welcome.png"
+       alt="Gephi workspace after installation" style="width:100%;">
+
+  <h3>Step 2: Prepare the Dataset</h3>
+  <p>
+    A network dataset typically contains a nodes table and an
+    edges table. The nodes table identifies each character,
+    while the edges table defines connections between them.
+    I used a Marvel comic-book network containing 327
+    characters and 9,891 weighted connections.
+  </p>
+
+  <h3>Step 3: Import the Nodes</h3>
+  <p>
+    Open Data Laboratory and select Import Spreadsheet.
+    Choose the nodes CSV file, set Import as Nodes Table,
+    and use the comma separator and UTF-8 encoding.
+    Confirm that the Id and Label columns are selected.
+  </p>
+  <img src="screenshots/02-nodes-imported.png"
+       alt="Imported Marvel character nodes" style="width:100%;">
+
+  <h3>Step 4: Import the Edges</h3>
+  <p>
+    Import the edges CSV file as an Edges Table.
+    Confirm that Source, Target, and Weight are present.
+    Select an undirected graph because character
+    co-appearances are mutual relationships.
+    Append the edges to the existing workspace.
+  </p>
+  <img src="screenshots/03-edges-imported.png"
+       alt="Imported Marvel network edges" style="width:100%;">
+
+  <h3>Step 5: Examine the Initial Network</h3>
+  <p>
+    Return to Overview. Initially, the network appears as
+    a dense cluster of overlapping connections.
+    This demonstrates why a graph layout algorithm
+    is necessary.
+  </p>
+  <img src="screenshots/04-network-before-layout.png"
+       alt="Marvel network before applying a layout"
+       style="width:100%;">
+
+  <h3>Step 6: Apply the ForceAtlas2 Layout</h3>
+  <p>
+    In the Layout panel, select ForceAtlas2.
+    I increased Scaling to 100 and enabled LinLog mode
+    to separate the nodes and reveal communities.
+    Click Run, allow the graph to rearrange, and
+    click Stop when the positions become useful.
+  </p>
+  <img src="screenshots/05-forceatlas2-layout.png"
+       alt="Marvel network after ForceAtlas2"
+       style="width:100%;">
+
+  <h3>Step 7: Calculate Degree Centrality</h3>
+  <p>
+    Open Statistics and run Average Degree.
+    My network had an average degree of 60.495.
+    This indicates that each character connects
+    to approximately 60 other characters on average.
+  </p>
+  <img src="screenshots/06-degree-statistics.png"
+       alt="Degree distribution report"
+       style="width:100%;">
+
+  <h3>Step 8: Resize Nodes by Degree</h3>
+  <p>
+    In Appearance, select Nodes, Size, and Ranking.
+    Choose Degree and enter a minimum size of 10
+    and maximum size of 80. Click Apply.
+    Highly connected characters will now appear larger.
+  </p>
+  <img src="screenshots/07-degree-node-sizing.png"
+       alt="Nodes sized by degree centrality"
+       style="width:100%;">
+
+  <h3>Step 9: Detect Communities</h3>
+  <p>
+    In Statistics, run Modularity using resolution 1.0
+    with edge weights enabled.
+    Gephi detected seven communities with
+    a modularity score of 0.436.
+  </p>
+  <img src="screenshots/08-modularity-report.png"
+       alt="Modularity community detection results"
+       style="width:100%;">
+
+  <h3>Step 10: Color the Communities</h3>
+  <p>
+    In Appearance, select Nodes, Color, and Partition.
+    Choose Modularity Class and click Apply.
+    Gephi assigns different colors to the seven
+    detected groups of Marvel characters.
+  </p>
+  <img src="screenshots/09-community-colors.png"
+       alt="Marvel communities identified by color"
+       style="width:100%;">
+
+  <h3>Step 11: Adjust Edge Visibility</h3>
+  <p>
+    Restore the edges using the bottom Graph toolbar
+    and reduce their visual prominence.
+    This prevents the 9,891 connections from
+    obscuring the colored characters.
+  </p>
+  <img src="screenshots/10-network-with-edges.png"
+       alt="Network with lighter edges"
+       style="width:100%;">
+
+  <h3>Step 12: Display Character Labels</h3>
+  <p>
+    Enable node labels using the Graph toolbar.
+    Labels allow viewers to identify important
+    characters such as Wolverine, Captain America,
+    Iron Man, and Spider-Man.
+  </p>
+  <img src="screenshots/11-network-with-labels.png"
+       alt="Marvel network displaying character labels"
+       style="width:100%;">
+
+  <h3>Step 13: Open the Preview Workspace</h3>
+  <p>
+    Open Preview and click Refresh.
+    The initial Preview may look crowded because
+    the edges use full opacity.
+  </p>
+  <img src="screenshots/12-initial-preview.png"
+       alt="Initial Gephi Preview"
+       style="width:100%;">
+
+  <h3>Step 14: Improve the Preview</h3>
+  <p>
+    In Preview Settings, change edge thickness to 0.3
+    and opacity to 15. Disable curved edges
+    and edge weight scaling.
+    Click Refresh to apply the changes.
+  </p>
+  <img src="screenshots/13-preview-light-edges.png"
+       alt="Gephi Preview with reduced edge opacity"
+       style="width:100%;">
+
+  <h3>Step 15: Enable Labels and Export</h3>
+  <p>
+    Under Node Labels, enable Show Labels,
+    Proportional Size, and Avoid Label Overlap.
+    Refresh the Preview and export the final
+    network as an SVG image.
+  </p>
+  <img src="screenshots/14-preview-with-labels.png"
+       alt="Final labeled Marvel network"
+       style="width:100%;">
+</section>
+
+<section>
+  <h2>How My Tutorial Is Different</h2>
+
+  <p>
+    Before making this tutorial, I reviewed the
+    <a href="https://gephi.org/quickstart/" target="_blank">
+      Official Gephi Quickstart tutorial
+    </a>.
+    That tutorial introduces network visualization using
+    the Les Misérables character network.
+  </p>
+
+  <p>
+    My tutorial uses a different dataset based on Marvel
+    comic-book characters. It also explains the specific
+    settings I tested in Gephi 0.11.4, including weighted
+    relationships, degree centrality, community detection,
+    and Preview adjustments for a dense network.
+  </p>
+</section>
+
+<section>
+  <h2>Important Tips and Problems I Encountered</h2>
+
+  <h3>1. ForceAtlas2 Kept Moving</h3>
+  <p>
+    When I first ran ForceAtlas2, the network kept rotating
+    without becoming much clearer. I experimented with
+    Scaling and LinLog mode before getting a more useful
+    arrangement.
+  </p>
+  <p>
+    The settings that worked better for my dataset included
+    Scaling = 100, Gravity = 1, and LinLog mode enabled.
+    I also learned that ForceAtlas2 does not automatically
+    stop, so I needed to stop it manually.
+  </p>
+
+  <h3>2. The Nodes Were Too Small</h3>
+  <p>
+    After applying the layout, the characters appeared
+    as tiny dots. I temporarily hid the edges and increased
+    the node size to 50 to check whether the nodes were
+    displaying correctly.
+  </p>
+  <p>
+    Once I could see the nodes, I used Degree ranking with
+    a minimum size of 10 and a maximum size of 80.
+    This made the visualization more meaningful.
+  </p>
+
+  <h3>3. Too Many Connections Made the Graph Crowded</h3>
+  <p>
+    With 9,891 edges, the initial network was difficult
+    to read. In Preview, I reduced edge thickness to 0.3
+    and opacity to 15, and disabled curved edges and
+    weight-based edge thickness.
+  </p>
+  <p>
+    This helped the seven colored communities stand out
+    without removing the underlying connections.
+  </p>
+</section>
+
+
+<section>
+  <h2>Software Version Differences and Troubleshooting</h2>
+
+  <p>
+    One challenge I encountered was that some general
+    CSV import instructions did not match the interface
+    in Gephi 0.11.4.
+  </p>
+
+  <p>
+    For example, I initially looked for an option to
+    specify that the first row contained column names.
+    However, the import window in my version did not
+    provide a separate checkbox for this.
+  </p>
+
+  <p>
+    After examining the CSV preview, I found that
+    Gephi had already recognized the Id and Label
+    columns automatically. I continued with the
+    import and verified that the character information
+    appeared correctly in Data Laboratory.
+  </p>
+
+  <p>
+    This demonstrated the importance of checking
+    the actual software interface and verifying
+    the results rather than following instructions
+    without testing them.
+  </p>
+</section>
+
+
+<section>
+  <h2>When Should You Use Gephi?</h2>
+
+  <p>
+    Gephi is especially useful when the goal is to
+    understand relationships between entities rather
+    than simply compare numerical values.
+  </p>
+
+  <p>
+    For example, Gephi can help visualize social
+    networks, communication patterns, character
+    relationships, and other connected datasets.
+    It provides tools such as ForceAtlas2, degree
+    centrality, and modularity to explore network
+    structure.
+  </p>
+
+  <p>
+    Compared with tools such as Altair or Vega-Lite,
+    which I have used for conventional charts,
+    Gephi is better suited to visually exploring
+    large networks of connected entities.
+  </p>
+
+  <p>
+    However, Gephi also has limitations. Dense
+    networks can become difficult to interpret,
+    and it takes experimentation to find suitable
+    layouts and visual settings. Gephi's exported
+    SVG is also a static visualization rather than
+    a fully interactive webpage.
+  </p>
+
+  <p>
+    Overall, I would recommend Gephi when the
+    relationships between data points are the
+    main focus of the analysis.
+  </p>
+</section>
+
+<section>
+  <h2>Dataset and Project Files</h2>
+
+  <p>
+    This tutorial uses a Marvel comic-book character network
+    from Melanie Walsh's collection of sample social network
+    datasets. It contains 327 characters and 9,891 weighted
+    connections representing character co-appearances.
+  </p>
+
+  <p>
+    You can download the files below and follow the tutorial
+    using the same data.
+  </p>
+
+  <ul>
+    <li>
+      <a href="data/marvel-unimodal-nodes.csv" download>
+        Download Marvel Nodes CSV
+      </a>
+    </li>
+    <li>
+      <a href="data/marvel-unimodal-edges.csv" download>
+        Download Marvel Edges CSV
+      </a>
+    </li>
+    <li>
+      <a href="images/marvel-network.svg" download>
+        Download Final Network Visualization
+      </a>
+    </li>
+  </ul>
+
+  <p>
+    Original dataset repository:
+    <a href="https://github.com/melaniewalsh/sample-social-network-datasets"
+       target="_blank" rel="noopener noreferrer">
+      Melanie Walsh - Sample Social Network Datasets
+    </a>
+  </p>
+</section>
+
+  </main>
+
+  <footer>
+    <p>DSC-402 | Portfolio Assignment 4</p>
+  </footer>
+</body>
+</html>

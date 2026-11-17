@@ -55,3 +55,66 @@ a:hover {
 .back-link {
     margin-bottom: 30px;
 }
+
+/* Portfolio 4 - Visual improvements */
+
+body {
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  color: #1e293b;
+}
+
+header h1 {
+  color: #253b80;
+}
+
+.project-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 18px rgba(30, 41, 59, 0.07);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(30, 41, 59, 0.12);
+}
+
+.project-card a {
+  background: #4f46e5;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.project-card a:hover {
+  background: #3730a3;
+}
+
+main section {
+  margin-bottom: 35px;
+}
+
+main section h2 {
+  color: #253b80;
+  margin-bottom: 15px;
+}
+
+main section h3 {
+  color: #334155;
+  margin-top: 25px;
+}
+
+main section img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 16px auto 28px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
